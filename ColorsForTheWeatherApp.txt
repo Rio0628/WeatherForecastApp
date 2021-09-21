@@ -1,0 +1,26 @@
+Possible colors for the weather app
+===================================
+ - Colors for the UI and lettering of the app - 
+Gainsboro - DBDBDB
+Silver Chalice - B0B5B3
+Sonic Silver - 706F6F
+Mint Cream - F0F7EE
+
+ - Colors for the background colors - 
+(Maybe I will add the colors later on with a background gradient of a combination of two colors)
+  = Sunny =
+Light Yellow - FEFADC
+Middle Yellow - FEEA00
+Buff - F4E285 (Light and Creamy Yellow)
+  = Cloudy =
+Grullo - AA998F
+Eggshell - FAF3DD
+  = Light Rain =
+Beau Blue - CAD8DE 
+  = Raining / Snowing =
+Blue NCS - 1D84B5
+Maximum Blue - 53A2BE
+(Snowing) Columbia Blue - C5D9E2 or Gray X 11 Gray
+  = Thunderstorm = 
+Oxford Blue - 0A2239
+Royal Blue Dark - 222A68
