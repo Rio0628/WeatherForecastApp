@@ -1,21 +1,118 @@
 @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@300;500;600;800&family=Oswald:wght@300;400;600;700&family=Titillium+Web:wght@300;400;600;700&display=swap');
 
 body {
-  margin: 20px;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  margin: 0;
+  /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+    sans-serif; */
+    font-family: Oswald;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.container {
+  position: relative;
+  left: 20%; 
+  border: 1px solid black;
+  border-radius: 20px;
+  padding: 20px;
+  width: 22rem;
+  height: 39rem;
+  margin: 20px;
+  background: #1D84B5;
+  color: #FAF3DD;
 }
+
+/* -- SEARCHBAR STYLES -- */
+
+.searchbar {
+  position: relative;
+  left: 1.5rem;
+  top: .8rem;
+  width: 18rem;
+  height: 1.2rem;
+  padding: 5px;
+  border-radius: 10px;
+  border: 1px solid #706F6F;
+} 
+
+/* -- MAIN INFO STYLES -- */
 
 .mainInfoContainer {
   padding: 20px;
-  border: 1px solid black;
   margin: 20px;
+  letter-spacing: 2px;
+} 
+/* Check the items align
+Display flex and then justify the content with space between  */
+
+
+.regionName {
+  font-size: 2.5rem;
+  position: relative;
+  bottom: 4rem;
+  right: 4.5rem;
+  width: 10em;
+  padding: 10px 10px;
+  text-align: center; 
 }
+
+.weatherIconDesc {
+  position: absolute;
+  padding: 2px 50px;
+  font-size: 25px;
+  letter-spacing: 3px;
+  top: 7rem;
+}
+
+.regionWeatherIcon {
+  position: relative;
+  padding: 20px;
+  background-image: url(./images/3313896.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 60px;
+  width: 60px;
+  margin: 0;
+  bottom: 4rem;
+  left: 5.2rem;
+}
+
+.regionTemperature {
+  position: absolute;
+  left: 6rem;
+  top: 16rem;
+  padding: 10px;
+  font-size: 35px;
+}
+
+/* -- FUTURE FORECAST STYLES -- */
+
+.ftrForecast {
+  border-right: 1px solid #FAF3DD;
+  padding: 15px 10px;
+  width: 30px;
+  color: #FAF3DD;
+}
+
+.ftrForecast:last-child {
+  border: none;
+}
+
+.ftrFrctIcon {
+  background-image: url(./images/3313896.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  padding: 15px;
+}
+.ftrFrctCntr {
+  position: absolute;
+  bottom: 5rem;
+  right: 4rem;
+  width: 16.2rem;
+  display: flex;
+}
+/* 
+* {
+  border: 1px solid black
+} */

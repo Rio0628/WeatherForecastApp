@@ -8,8 +8,16 @@ function App() {
     <div className="App">
       <div className='container'>
         <Searchbar />
+
         <MainInfo />
-        <h1> Hello</h1>
+        
+        <div className='ftrFrctCntr'>
+          <FtrForecast />
+          <FtrForecast />
+          <FtrForecast />
+          <FtrForecast />
+          <FtrForecast />
+        </div>
       </div>
     </div>
   );
