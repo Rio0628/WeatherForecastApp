@@ -3,9 +3,9 @@ import React from 'react';
 const FtrForecast = (props) => { 
     return (
         <div className='ftrForecast'>
-            <p className='ftrFrct'>MON</p>
+            <p className='ftrFrct'>{props.day}</p>
             <div className='ftrFrctIcon'></div>
-            <p className='ftrFrctTemp'>16°C</p>
+            <p className='ftrFrctTemp'>{props.temp}</p>
         </div>
     )
 }

@@ -8,6 +8,7 @@ body {
     font-family: Oswald;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  height: 100rem;
 }
 
 .container {
@@ -39,9 +40,13 @@ body {
 /* -- MAIN INFO STYLES -- */
 
 .mainInfoContainer {
-  padding: 20px;
   margin: 20px;
   letter-spacing: 2px;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 18rem;
 } 
 /* Check the items align
 Display flex and then justify the content with space between  */
@@ -49,41 +54,43 @@ Display flex and then justify the content with space between  */
 
 .regionName {
   font-size: 2.5rem;
+  letter-spacing: 5px;
   position: relative;
-  bottom: 4rem;
-  right: 4.5rem;
-  width: 10em;
-  padding: 10px 10px;
+  bottom: 3.3rem;
+  width: 12em;
   text-align: center; 
 }
 
 .weatherIconDesc {
   position: absolute;
-  padding: 2px 50px;
-  font-size: 25px;
-  letter-spacing: 3px;
   top: 7rem;
+  text-align: center;
+  font-size: 25px;
+  letter-spacing: 2px;
+  
 }
 
 .regionWeatherIcon {
   position: relative;
-  padding: 20px;
-  background-image: url(./images/3313896.png);
+  bottom: 4.5rem;
+  padding: 15px;
+  /* background-image: url(./images/ClearDay.png);
   background-size: contain;
   background-repeat: no-repeat;
   height: 60px;
-  width: 60px;
+  width: 60px; */
   margin: 0;
-  bottom: 4rem;
-  left: 5.2rem;
+  border: 1px solid black;
+ 
 }
 
 .regionTemperature {
   position: absolute;
-  left: 6rem;
-  top: 16rem;
+  left: 5.8rem;
+  top: 15.5rem;
   padding: 10px;
   font-size: 35px;
+  text-align: center;
 }
 
 /* -- FUTURE FORECAST STYLES -- */
@@ -100,7 +107,7 @@ Display flex and then justify the content with space between  */
 }
 
 .ftrFrctIcon {
-  background-image: url(./images/3313896.png);
+  background-image: url(./images/ClearDay.png);
   background-size: contain;
   background-repeat: no-repeat;
   padding: 15px;
@@ -112,7 +119,15 @@ Display flex and then justify the content with space between  */
   width: 16.2rem;
   display: flex;
 }
-/* 
-* {
+
+/* * {
   border: 1px solid black
 } */
+
+
+.linkIcons {
+  border: 1px solid black;
+  position: absolute;
+  top: 60rem;
+  margin: 10px;
+}
