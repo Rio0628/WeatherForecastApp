@@ -72,14 +72,12 @@ Display flex and then justify the content with space between  */
 
 .regionWeatherIcon {
   position: relative;
-  bottom: 4.5rem;
-  padding: 15px;
+  bottom: 3.5rem;
   /* background-image: url(./images/ClearDay.png);
   background-size: contain;
   background-repeat: no-repeat;
   height: 60px;
   width: 60px; */
-  margin: 0;
   border: 1px solid black;
  
 }

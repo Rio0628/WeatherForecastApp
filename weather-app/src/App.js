@@ -22,6 +22,16 @@ class App extends React.Component {
     }
   }
   render() {
+    // console.log(api.openweathermap.org/data/2.5/weather?q=London&appid=f0caa45808a9789d4f46776484b799e2);
+
+    const dailyWeather = (cityName) => {
+      const key = 'f0caa45808a9789d4f46776484b799e2';
+      fetch("api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=" + key).then(resp => resp.json()).then(resp => JSON.parse(resp)).then(resp => console.log(resp)).catch(e => console.log(e));
+      // Just return the fetch api and after that console log result that will have the JSON.parse() method.
+    }
+
+    dailyWeather('London');
+    
     return (
       <div className="App">
         <div className='container'>

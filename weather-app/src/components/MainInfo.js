@@ -7,7 +7,7 @@ class MainInfo extends React.Component {
             <div className='mainInfoContainer'>
                 <h3 className='regionName'>{this.props.name}</h3>
                 <p className='weatherIconDesc'>{this.props.weather}</p>
-                <div className='regionWeatherIcon'><img className='weatherIcon' src={ClearDay} alt={this.props.weather}></img></div>
+                <div className='regionWeatherIcon'><img className='weatherIcon' src={ClearDay} alt={this.props.weather} height='100px' width='100px'></img></div>
                 <p className='regionTemperature'>{this.props.temp}</p>
             </div>
         )
