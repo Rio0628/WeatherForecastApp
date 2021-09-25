@@ -70,6 +70,10 @@ Display flex and then justify the content with space between  */
   
 }
 
+button {
+  
+}
+
 .regionWeatherIcon {
   position: relative;
   bottom: 3.5rem;
