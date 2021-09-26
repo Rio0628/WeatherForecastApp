@@ -9,6 +9,7 @@ class App extends React.Component {
     super(props)
     // Temporary State to populate component before inputting information of Weather API
     this.state = {
+      SearchOnChange: '',
       ExampleForecast: [],
       CurrentForecast: [
         {name: 'New York, US', wthr: "Sunny", temp: '24°C / 56°F'}
@@ -24,18 +25,46 @@ class App extends React.Component {
   }
   render() {
     // console.log(api.openweathermap.org/data/2.5/weather?q=London&appid=f0caa45808a9789d4f46776484b799e2);
+    let obj;
     const dailyWeather = (cityName) => {
-      const url = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=f0caa45808a9789d4f46776484b799e2`;
-      fetch(url).then(resp => resp.json()).then(data => console.log(data))
+      const url = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=f0caa45808a9789d4f46776484b799e2&units=metric`;
+      fetch(url).then(resp => resp.json()).then(data => obj = data).then(data => console.log(data)).catch(err => console.log(err));
 
-      .catch(err => console.log(err));
+      return obj;
     }
-    dailyWeather("London");    
+    console.log(dailyWeather("New York"));
+
+    const onChange = (e) => {
+      console.log(e.target.value);
+      if (e.target.className === 'searchbar') {
+        this.setState({
+          SearchOnChange: e.target.value
+        })
+      }
+    }
+
+    const onClick = (e) => {
+      console.log(e.target)
+      if (e.target.className === 'submitBtn') {
+        // console.log(this.state.SearchOnChange);
+        let a = dailyWeather('New York');
+        console.log(a)
+        this.setState({ExampleForecast: a})
+        console.log("SPACER")
+        console.log(this.state.ExampleForecast)
+      }
+    }
+
 
     return (
       <div className="App">
         <div className='container'>
-          <Searchbar />
+
+          <div className='searchContainer'>
+            <Searchbar onChange={onChange} />
+            <li className='submitBtn' onClick={onClick}>Search</li>
+          </div>
+          
 
           <MainInfo 
             name={this.state.CurrentForecast[0].name} 
