@@ -25,14 +25,22 @@ class App extends React.Component {
   }
   render() {
     // console.log(api.openweathermap.org/data/2.5/weather?q=London&appid=f0caa45808a9789d4f46776484b799e2);
-    let obj;
+    let object;
+
+    const transferData = (a) => {
+      let info = [];
+      info.push(a)
+      object = {
+        name: info[0].name,
+        weather: info[0].weather[0].main,
+        temp: info[0].main.temp
+      }
+    }
+
     const dailyWeather = (cityName) => {
       const url = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=f0caa45808a9789d4f46776484b799e2&units=metric`;
-      fetch(url).then(resp => resp.json()).then(data => obj = data).then(data => console.log(data)).catch(err => console.log(err));
-
-      return obj;
-    }
-    console.log(dailyWeather("New York"));
+      fetch(url, {method: 'get'}).then(resp => resp.json()).then(data => transferData(data)).catch(err => console.log(err));
+    } 
 
     const onChange = (e) => {
       console.log(e.target.value);
@@ -42,19 +50,21 @@ class App extends React.Component {
         })
       }
     }
+    dailyWeather('New York');
 
     const onClick = (e) => {
       console.log(e.target)
       if (e.target.className === 'submitBtn') {
         // console.log(this.state.SearchOnChange);
-        let a = dailyWeather('New York');
-        console.log(a)
-        this.setState({ExampleForecast: a})
-        console.log("SPACER")
+        
+        dailyWeather('New York');
+        
         console.log(this.state.ExampleForecast)
+        console.log("SPACER")
+        console.log(object)
       }
     }
-
+    
 
     return (
       <div className="App">
