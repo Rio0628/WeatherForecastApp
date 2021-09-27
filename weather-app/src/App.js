@@ -2,6 +2,7 @@ import React from 'react'
 import Searchbar from './components/Searchbar';
 import MainInfo from './components/MainInfo';
 import FtrForecast from './components/FtrForecast';
+import axios from 'axios'
 
 
 class App extends React.Component {
@@ -27,9 +28,9 @@ class App extends React.Component {
     // console.log(api.openweathermap.org/data/2.5/weather?q=London&appid=f0caa45808a9789d4f46776484b799e2);
     let object;
 
-    const transferData = (a) => {
+    async function transferData(a, b, c) {
       let info = [];
-      info.push(a)
+      await info.push(a)
       object = {
         name: info[0].name,
         weather: info[0].weather[0].main,
@@ -37,9 +38,12 @@ class App extends React.Component {
       }
     }
 
-    const dailyWeather = (cityName) => {
+    async function dailyWeather(cityName) {
       const url = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=f0caa45808a9789d4f46776484b799e2&units=metric`;
-      fetch(url, {method: 'get'}).then(resp => resp.json()).then(data => transferData(data)).catch(err => console.log(err));
+      
+      await axios.get(url).then(data => console.log(data.data));
+      
+      // .then(resp => resp.json()).then(data => transferData(data)).catch(err => console.log(err));
     } 
 
     const onChange = (e) => {
@@ -50,18 +54,15 @@ class App extends React.Component {
         })
       }
     }
-    dailyWeather('New York');
 
     const onClick = (e) => {
       console.log(e.target)
       if (e.target.className === 'submitBtn') {
         // console.log(this.state.SearchOnChange);
+        console.log(dailyWeather('New York'));
+
         
-        dailyWeather('New York');
-        
-        console.log(this.state.ExampleForecast)
-        console.log("SPACER")
-        console.log(object)
+        // console.log(object)
       }
     }
     
