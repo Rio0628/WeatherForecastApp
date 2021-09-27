@@ -28,21 +28,23 @@ class App extends React.Component {
     // console.log(api.openweathermap.org/data/2.5/weather?q=London&appid=f0caa45808a9789d4f46776484b799e2);
     let object;
 
-    async function transferData(a, b, c) {
-      let info = [];
-      await info.push(a)
+    function transferData(a, b, c) {
+      console.log(a);
+      console.log(b);
+      console.log(c);
       object = {
-        name: info[0].name,
-        weather: info[0].weather[0].main,
-        temp: info[0].main.temp
+        name: a,
+        weather: b,
+        temp: c
       }
     }
 
     async function dailyWeather(cityName) {
       const url = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=f0caa45808a9789d4f46776484b799e2&units=metric`;
+      let a = [];
+      await axios.get(url).then(data => a.push(data.data))
       
-      await axios.get(url).then(data => console.log(data.data));
-      
+      transferData(a[0].name, a[0].weather[0].main, a[0].main.temp)
       // .then(resp => resp.json()).then(data => transferData(data)).catch(err => console.log(err));
     } 
 
@@ -55,18 +57,27 @@ class App extends React.Component {
       }
     }
 
-    const onClick = (e) => {
+    const chgMainState = (a) => this.setState({ExampleForecast: a});
+    
+    const onClick = async (e) => {
       console.log(e.target)
       if (e.target.className === 'submitBtn') {
         // console.log(this.state.SearchOnChange);
-        console.log(dailyWeather('New York'));
-
-        
-        // console.log(object)
+        await dailyWeather("New York");
+        console.log(object)
+        chgMainState(object)
+        console.log('SPACER')
+        console.log(this.state.ExampleForecast)
+        // document.body.style.background = color; == Use something like this in the future to change the background according to the weather type of the region.
       }
     }
-    
 
+    // window.onload = () => {
+    //   console.log('Mario');
+    //   dailyWeather('London')
+    //   chgMainState(object);
+    // } This is for later to have an initial state so the application is not empty 
+      
     return (
       <div className="App">
         <div className='container'>
