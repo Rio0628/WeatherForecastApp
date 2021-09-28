@@ -12,9 +12,8 @@ class App extends React.Component {
     this.state = {
       SearchOnChange: '',
       ExampleForecast: [],
-      CurrentForecast: [
-        {name: 'New York, US', wthr: "Sunny", temp: '24°C / 56°F'}
-      ],
+      CurrentForecast: 
+        {name: 'New York, US', wthr: "Sunny", temp: '24°C'},
       FtrForecast: [
         {day: 'MON', wthr: 'Sunny', temp: '24°C'},
         {day: 'TUE', wthr: 'Sunny', temp: '32°C'},
@@ -28,25 +27,36 @@ class App extends React.Component {
     // console.log(api.openweathermap.org/data/2.5/weather?q=London&appid=f0caa45808a9789d4f46776484b799e2);
     let object;
 
-    function transferData(a, b, c) {
+    function transferData(a, b, c, d) {
       console.log(a);
       console.log(b);
       console.log(c);
+      console.log(d);
       object = {
-        name: a,
-        weather: b,
-        temp: c
+        name: `${a}, ${d}`,
+        wthr: b,
+        temp: `${c}`
       }
     }
-
-    async function dailyWeather(cityName) {
+    
+    const dailyWeather = async (cityName) => {
       const url = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=f0caa45808a9789d4f46776484b799e2&units=metric`;
       let a = [];
+
       await axios.get(url).then(data => a.push(data.data))
-      
-      transferData(a[0].name, a[0].weather[0].main, a[0].main.temp)
+      transferData(a[0].name, a[0].weather[0].main, a[0].main.temp, a[0].sys.country)
       // .then(resp => resp.json()).then(data => transferData(data)).catch(err => console.log(err));
     } 
+
+    const futureWeather = (cityName) => {
+      const url = `https://api.openweathermap.org/data/2.5/forecast/daily?q=${cityName}&cnt=5&appid=f0caa45808a9789d4f46776484b799e2&units=metric`;
+      let a = [];
+
+      axios.get(url).then(data => a.push(data))
+      console.log(a)
+    }
+
+    futureWeather('london');
 
     const onChange = (e) => {
       console.log(e.target.value);
@@ -57,27 +67,21 @@ class App extends React.Component {
       }
     }
 
-    const chgMainState = (a) => this.setState({ExampleForecast: a});
+    const chgMainState = (a) => this.setState({CurrentForecast: a});
     
     const onClick = async (e) => {
       console.log(e.target)
       if (e.target.className === 'submitBtn') {
         // console.log(this.state.SearchOnChange);
-        await dailyWeather("New York");
-        console.log(object)
+        await dailyWeather(this.state.SearchOnChange);
         chgMainState(object)
-        console.log('SPACER')
-        console.log(this.state.ExampleForecast)
         // document.body.style.background = color; == Use something like this in the future to change the background according to the weather type of the region.
       }
     }
 
-    // window.onload = () => {
-    //   console.log('Mario');
-    //   dailyWeather('London')
-    //   chgMainState(object);
-    // } This is for later to have an initial state so the application is not empty 
-      
+    // Try to implement a Window.onload function or find a way to have the UI set up to be empty until it is populated
+    // Use a boolean state to make the components appear 
+    
     return (
       <div className="App">
         <div className='container'>
@@ -89,9 +93,9 @@ class App extends React.Component {
           
 
           <MainInfo 
-            name={this.state.CurrentForecast[0].name} 
-            weather={this.state.CurrentForecast[0].wthr} 
-            temp={this.state.CurrentForecast[0].temp}
+            name={this.state.CurrentForecast.name} 
+            weather={this.state.CurrentForecast.wthr} 
+            temp={this.state.CurrentForecast.temp}
           />
           
           <div className='ftrFrctCntr'>

@@ -97,29 +97,25 @@ Display flex and then justify the content with space between  */
   top: 7rem;
   text-align: center;
   font-size: 25px;
-  letter-spacing: 2px;
+  letter-spacing: 4px;
   
 }
 
 .regionWeatherIcon {
   position: relative;
-  bottom: 3.5rem;
-  /* background-image: url(./images/ClearDay.png);
-  background-size: contain;
-  background-repeat: no-repeat;
-  height: 60px;
+  bottom: 3rem;
+  /*height: 60px;
   width: 60px; */
-  border: 1px solid black;
- 
 }
 
 .regionTemperature {
   position: absolute;
-  left: 5.8rem;
-  top: 15.5rem;
+  left: 9.2rem;
+  top: 16rem;
   padding: 10px;
   font-size: 35px;
   text-align: center;
+  letter-spacing: 2px;
 }
 
 /* -- FUTURE FORECAST STYLES -- */
