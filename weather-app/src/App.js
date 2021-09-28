@@ -26,16 +26,14 @@ class App extends React.Component {
   render() {
     // console.log(api.openweathermap.org/data/2.5/weather?q=London&appid=f0caa45808a9789d4f46776484b799e2);
     let object;
-
-    function transferData(a, b, c, d) {
-      console.log(a);
-      console.log(b);
-      console.log(c);
-      console.log(d);
+    let ftrWthrObject;
+    function transferData(a, b, c, d, e, f) {
       object = {
         name: `${a}, ${d}`,
         wthr: b,
-        temp: `${c}`
+        temp: `${c}°C`,
+        long: e,
+        lat: f
       }
     }
     
@@ -44,19 +42,22 @@ class App extends React.Component {
       let a = [];
 
       await axios.get(url).then(data => a.push(data.data))
-      transferData(a[0].name, a[0].weather[0].main, a[0].main.temp, a[0].sys.country)
+      
+      transferData(a[0].name, a[0].weather[0].main, a[0].main.temp, a[0].sys.country, a[0].coord.lon, a[0].coord.lat)
       // .then(resp => resp.json()).then(data => transferData(data)).catch(err => console.log(err));
     } 
 
-    const futureWeather = (cityName) => {
-      const url = `https://api.openweathermap.org/data/2.5/forecast/daily?q=${cityName}&cnt=5&appid=f0caa45808a9789d4f46776484b799e2&units=metric`;
+    const futureWeather = async (cityName) => {
+      const url = `https://api.openweathermap.org/data/2.5/onecall?lat=25.7743&lon=-80.1937&exclude=current,minutely,hourly,alerts&units=metric&appid=4439be80c1f0ade164109e2399a51173
+      `;
+      // 4439be80c1f0ade164109e2399a51173
       let a = [];
-
-      axios.get(url).then(data => a.push(data))
+    
+      await axios.get(url).then(data => a.push(data.data))
       console.log(a)
     }
 
-    futureWeather('london');
+    futureWeather('miami');
 
     const onChange = (e) => {
       console.log(e.target.value);
@@ -75,6 +76,7 @@ class App extends React.Component {
         // console.log(this.state.SearchOnChange);
         await dailyWeather(this.state.SearchOnChange);
         chgMainState(object)
+        console.log(object)
         // document.body.style.background = color; == Use something like this in the future to change the background according to the weather type of the region.
       }
     }
