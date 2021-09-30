@@ -68,6 +68,19 @@ body {
   background: #565656;
 }
 
+/* -- STARTUP MESSAGE STYLES -- */
+
+.startupMessage {
+  position: relative;
+  top: 11rem;
+  padding: 10px;
+  text-align: center;
+  letter-spacing: 5px;
+  border: 1px solid #176a91;
+  border-right: 1px solid #FAF3DD;
+  border-left: 1px solid #FAF3DD;
+}
+
 /* -- MAIN INFO STYLES -- */
 
 .mainInfoContainer {
@@ -81,7 +94,6 @@ body {
 } 
 /* Check the items align
 Display flex and then justify the content with space between  */
-
 
 .regionName {
   font-size: 2.5rem;
@@ -106,23 +118,25 @@ Display flex and then justify the content with space between  */
   bottom: 3rem;
   /*height: 60px;
   width: 60px; */
+  
 }
 
 .regionTemperature {
+  display: inline-block;
   position: absolute;
-  left: 9.2rem;
+  left: 8.1rem;
   top: 16rem;
-  padding: 10px;
+  padding: 10px 25px;
   font-size: 35px;
   text-align: center;
-  letter-spacing: 2px;
+  letter-spacing: 4px;
 }
 
 /* -- FUTURE FORECAST STYLES -- */
 
 .ftrForecast {
   border-right: 1px solid #FAF3DD;
-  padding: 15px 10px;
+  padding: 15px 12px 15px 15px;
   width: 30px;
   color: #FAF3DD;
 }
@@ -131,16 +145,21 @@ Display flex and then justify the content with space between  */
   border: none;
 }
 
-.ftrFrctIcon {
-  background-image: url(./images/ClearDay.png);
-  background-size: contain;
-  background-repeat: no-repeat;
-  padding: 15px;
+.ftrFrct {
+  position: relative;
+  left: .1rem;
 }
+
+.ftrFrctIcon {
+  position: relative;
+  top: .125rem;
+  right: .3rem;
+}
+
 .ftrFrctCntr {
   position: absolute;
   bottom: 5rem;
-  right: 4rem;
+  right: 5rem;
   width: 16.2rem;
   display: flex;
 }
