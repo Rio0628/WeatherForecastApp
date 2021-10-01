@@ -14,12 +14,12 @@ const FtrForecast = (props) => {
 
     const WeatherIcon = (weather) => {
         if (weather === 'Clear') {
-            if (props.info.icon === '01n') {return ClearNight}
+            if (props.info.icon === '01n') {return ClearNight }
             else return ClearDay
         }
         if (weather === 'Clouds' || props.info.icon === '50d') { 
-            if (props.info.icon === '02n') { return PartlyCloudyNight}
-            if (props.info.icon === '02d') { return PartlyCloudyDay}
+            if (props.info.icon === '02n') { return PartlyCloudyNight }
+            if (props.info.icon === '02d') { return PartlyCloudyDay }
             else return Cloudy
         }
         if (weather === 'Drizzle') { return Drizzle }

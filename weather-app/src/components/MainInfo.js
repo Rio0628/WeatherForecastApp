@@ -18,8 +18,8 @@ class MainInfo extends React.Component {
                 else return ClearDay
             }
             if (weather === 'Clouds' || this.props.icon === '50d') { 
-                if (this.props.icon === '02n') { return PartlyCloudyNight}
-                if (this.props.icon === '02d') { return PartlyCloudyDay}
+                if (this.props.icon === '02n') { return PartlyCloudyNight }
+                if (this.props.icon === '02d') { return PartlyCloudyDay }
                 else return Cloudy
             }
             if (weather === 'Drizzle') { return Drizzle }
